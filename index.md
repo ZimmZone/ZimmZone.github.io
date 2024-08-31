@@ -1,7 +1,8 @@
 ## Erin Zimmerman PhD
+
 ![Woman with brown hair](https://github.com/ZimmZone/ZimmZone.github.io/blob/main/img/Outdoor%20Headshot.jpg "Erin Zimmerman")
+
 <img
-  
 src="https://github.com/ZimmZone/ZimmZone.github.io/blob/main/img/Outdoor%20Headshot.jpg"
 alt="Woman with brown hair"
 width="50%">
