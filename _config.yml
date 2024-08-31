@@ -1,6 +1,6 @@
-Title:
-Discription:
-Name: 
+title: Erin Zimmerman
+description: Earth Data Analytics Certificate Course 2024
+logo: /img/Outdoor%20Headshot.jpg?raw=true
 remote_theme: pages-themes/minimal@v0.2.0
 plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
