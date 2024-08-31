@@ -1,6 +1,9 @@
 ## Erin Zimmerman PhD
 
-![Woman with brown hair against a blurred green background](https://github.com/ZimmZone/ZimmZone.github.io/blob/main/img/Outdoor%20Headshot.jpg "Erin Zimmerman")
+<img
+src="https://github.com/ZimmZone/ZimmZone.github.io/blob/main/img/Outdoor%20Headshot.jpg"
+alt="Woman with brown hair"
+width="50%">
 
 I am an academic and political scientist by training and a writer by profession. I am looking forward to learning how to turn the wealth of data now available into actionable insights for combatting climate change, preserving and restoring our natural resources, and improving lives. 
 ****
@@ -15,6 +18,28 @@ I am an academic and political scientist by training and a writer by profession.
 * I am passionate about conservaton and combatting climate change - so my hobbies include climate activism and regenerative gardening
 ****
 #### Contact Information
-* [Email](Erin.Zimmerman@colorado.edu)
-* [LinkedIn](https://www.linkedin.com/in/erin-zimmermanphd/)
-* [Website](https://www.erinzimmermanphd.com/)
+<ul>
+<li>
+<a 
+  href="Erin.Zimmerman@colorado.edu"
+  target="_blank">
+  Email
+</a> 
+</li>
+
+<li>
+<a
+  href="https://www.linkedin.com/in/erin-zimmermanphd/"
+  target="_blank">
+  LinkedIn
+</a>
+</li>
+  
+<li>
+<a
+  href="https://www.erinzimmermanphd.com/"
+  target="_blank">
+  Website
+</a>
+</li>
+</ul>
