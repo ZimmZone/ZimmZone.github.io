@@ -1,5 +1,5 @@
 ## Erin Zimmerman PhD
-![Erin Zimmerman](https://github.com/ZimmZone/ZimmZone.github.io/blob/main/img/Outdoor%20Headshot.jpg)
+![Erin Zimmerman](img/Outdoor%20Headshot.jpg)
 
 I am an academic and political scientist by training and a writer by profession. I am looking forward to learning how to turn the wealth of data now available into actionable insights for combatting climate change, preserving and restoring our natural resources, and improving lives. 
 
