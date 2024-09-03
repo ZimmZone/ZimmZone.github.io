@@ -38,3 +38,6 @@ I am an academic and political scientist by training and a writer by profession.
 </a>
 </li>
 </ul>
+
+### Map of UTTC
+<embed type="text/html" src="img/uttc.html" width="600" height="600">
