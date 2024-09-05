@@ -40,4 +40,4 @@ I am an academic and political scientist by training and a writer by profession.
 </ul>
 
 #### Welcome to my Neighborhood in Loveland, Colorado.
-<embed type="text/html" src="img/tvhs(1).html" width="600" height="600">
+<embed type="text/html" src="img/tvhs (1).html" width="600" height="600">
