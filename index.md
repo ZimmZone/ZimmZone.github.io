@@ -41,3 +41,7 @@ I am an academic and political scientist by training and a writer by profession.
 
 #### Welcome to my Neighborhood in Loveland, Colorado.
 <embed type="text/html" src="img/tvhs1.html" width="600" height="600">
+
+---
+## Earth Data Analytics Projects
+* [Maximum Temperature in Denver Colorado from 1948-2023] ([Notebooks/](https://github.com/ZimmZone/ZimmZone.github.io/blob/main/Notebooks/portfolio_Denver_CO_TMAX_withcode.html))
