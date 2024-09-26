@@ -44,4 +44,4 @@ I am an academic and political scientist by training and a writer by profession.
 
 ---
 ## Earth Data Analytics Projects
-* [Maximum Temperature in Denver Colorado from 1948-2023](https://github.com/ZimmZone/ZimmZone.github.io/blob/main/Notebooks/portfolio_Denver_CO_TMAX_withcode.html)
+* [Maximum Temperature in Denver Colorado from 1948-2023](Notebooks/portfolio_Denver_CO_TMAX_withcode.html)
