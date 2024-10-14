@@ -45,3 +45,4 @@ I am an academic and political scientist by training and a writer by profession.
 ---
 ## Earth Data Analytics Projects
 * [Maximum Temperature in Denver Colorado from 1948-2023](/Notebooks/portfolio_Denver_CO_TMAX_withcode.html)
+* [Arctic Tern Migration 2023 - Interactive Map](/Notebooks/arctic-tern-migration-final.html)
