@@ -56,8 +56,43 @@ from tqdm.notebook import tqdm
 warnings.simplefilter('ignore')
 ```
 
-```
+```python
 # Prevent GDAL from quitting due to momentary disruptions
 os.environ["GDAL_HTTP_MAX_RETRY"] = "5"
 os.environ["GDAL_HTTP_RETRY_DELAY"] = "1"
 ```
+
+## STEP 2: Create a Site Map
+
+Use the Center for Disease Control (CDC) Places dataset for human health data to compare with vegetation. CDC Places also provides
+some modified census tracts, clipped to the city boundary, to go along with the health data. Start by downloading the matching geographic
+data, and then select the City of Denver, Colorado.
+
+```python
+# Define info for CDC download, and only download cdc data once
+if not os.path.exists(cdc_data_path):
+    cdc_data_url = ('https://data.cdc.gov/download/x7zy-2xmx/application%2Fzip')
+    cdc_data_gdf = gpd.read_file(cdc_data_url)
+    denver_gdf = cdc_data_gdf[cdc_data_gdf.PlaceName=='Denver']
+    denver_gdf.to_file(cdc_data_path, index=False)
+
+# Load in cdc data
+denver_gdf = gpd.read_file(cdc_data_path)
+
+# Check the data - site plot 
+denver_gdf.plot()
+
+(
+    denver_gdf
+    .to_crs(ccrs.Mercator())
+    .hvplot(
+        line_color='red', fill_color=None,
+        crs=ccrs.Mercator(), tiles='EsriImagery',
+        frame_width=600
+    )
+)
+```
+
+<div class="row" style="margin-top: 20px; margin-bottom: 20px; margin-left: 10px; margin-right: 10px;">
+    <img src="/assets/img/big_data/" alt="Lower Putah Creek Watershed Boundary" width="70%" height="70%" /> 
+</div>
