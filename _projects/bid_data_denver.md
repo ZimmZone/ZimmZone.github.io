@@ -12,6 +12,11 @@ This project examines the link between vegitation cover (using average NDVI as a
 
 For this project, I split up the green space (NDVI) data by census tract, because this matches the human health data from the CDC. Because I need to know more about the structure of green space within each tract, I need higher resolution data, so I will use National Agricultural Imagery Program (NAIP) data, which is taken for the continental US every few years at 1m resolution. The main purpose of the NAIP data is, as the name suggests, agriculture. However, it’s also a great source for urban areas where lots is happening on a very small scale.
 
+## References
+City-Data. (n.d.). Income in Denver, Colorado. City-Data.com. Retrieved March 18, 2025, from https://www.city-data.com/income/income-Denver-Colorado.html
+
+
+
 # Set Up Analysis
 
 ### Imports Libraries
@@ -88,7 +93,7 @@ denver_gdf.plot()
 ```
 
 <div class="row" style="margin-top: 20px; margin-bottom: 20px; margin-left: 10px; margin-right: 10px;">
-    <img src="/img/big_data/cdc_census_tracts" alt="Denver CDC Census Tracts" width="70%" height="70%" /> 
+    <img src="/img/big_data/cdc_census_tracts.png" alt="Denver CDC Census Tracts" width="70%" height="70%" /> 
 </div>
 
 # City of Denver Data Description
@@ -195,16 +200,21 @@ merged_gdf = (
 ```
 
 <div class="row" style="margin-top: 20px; margin-bottom: 20px; margin-left: 10px; margin-right: 10px;">
-    <img src="/img/big_data/Asthma_Denver.jpg" alt="Asthma Prevelence in Denver, CO" width="80%" height="80%"/> 
+    <img src="/img/big_data/Asthma_Denver.png" alt="Asthma Prevelence in Denver, CO" width="80%" height="80%"/> 
 </div>
 
 # CDC ASTHMA PLACES DESCRIPTION AND CITATION
 
 ## Interpretation
 
-It is clear that there is a geographical component to the distribution of adults who have asthma. Whether this is a by product of another variable or not cannot be determined at this time. Other potential causes could be income disparity, areas with high pollution due to heavy industry or other reasons, or areas with insufficent access to affordable healthcare. 
+There does appear to be a geographical component to the distribution of adults who have asthma. Whether this is a by product of another variable or not cannot be determined at this time. Other potential causes could be income disparity, areas with high pollution due to heavy industry or other reasons, or areas with insufficent access to affordable healthcare. For intance, in the map of income of Denver, there are similarities between those in lower income areas and those with asthma. The area in the Asthma Incidence map shows that the average income in that census tract is approximately 26K. The areas directly to the north has a significantly lower rate of asthma and a median income of 240k (City-Data.com, n.d.). 
 
-There is one map that does closely match the distribution of asthma prevalence, and that is a map based on race. A demographic map of Denver, when overlaid on a map of asthma prevalence, shows a strong correlation between asthma and black communities, with a lesser correlation between asthma and hispanic communities.
+
+There is one map that does closely match the distribution of asthma prevalence, and that is a map based on more diverse communities. Communities with the least around of diversity showed the lowest levels of asthma (City-Data.com, n.d.). 
+
+<div class="row" style="margin-top: 20px; margin-bottom: 20px; margin-left: 10px; margin-right: 10px;">
+    <img src="/img/big_data/Asthma_Denver.png" alt="Asthma Prevelence in Denver, CO" width="40%" height="40%"/> 
+</div>
 
 # Connect to the planetary computer catalog
 ```python
@@ -464,11 +474,14 @@ def plot_chloropleth(gdf, colorbar_opts=None, **opts):
 )
 ```
 <div class="row" style="margin-top: 20px; margin-bottom: 20px; margin-left: 10px; margin-right: 10px;">
-    <img src="/img/big_data/denver_city.jpg" alt="City of Denver" width="80%" height="80%"/> 
+    <img src="/img/big_data/asthma_rate_denver.png" alt="City of Denver" width="80%" height="80%"/> 
+</div>
+<div class="row" style="margin-top: 20px; margin-bottom: 20px; margin-left: 10px; margin-right: 10px;">
+    <img src="/img/big_data/veg_density_denver.png" alt="City of Denver" width="80%" height="80%"/> 
 </div>
 
 ## Plot discription and Comparison
 
-While there are some slight similarities between the two plots I don't see any clear correlation between the asthma rates by census tract and the vegitation density by census tract. Some areas actually show a inverse relationship cuhc as areas through the center of the city along Interstate 55.
+There are several coreleation between the two plots and other sources of data that show a slight link between vegitation density and asthma rates. However, additional research has show a more persuasive correlation between income and asthma and ethnicity and asthma. There also seems to be a link between how close individuals live highways and industrial areas and asthma rates.
 
 
