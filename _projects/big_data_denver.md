@@ -3,7 +3,7 @@
 longdesc="https://www.istockphoto.com/photo/denver-colorado-skyscrapers-snowy-longs-peak-rocky-mountains-summer-gm537215344-95103705" /> 
 </div>
 
-#### Introduction
+## Introduction
 # Urban Greenspace and Asthma Prevalence
 
 This project examines the link between vegetation cover (using average NDVI as a measurement of vegetation health) and human health. In this notebook, I will calculate patch, edge, and fragmentation statistics for urban greenspace in Washington, D.C. These statistics reflect the connectivity and distribution of urban greenspace, which are important for ecosystem function and accessibility. I then use a linear model to identify statistically significant correlations between greenspace distribution and health data compiled by the U.S. Centers for Disease Control and Prevention (CDC).
@@ -12,16 +12,16 @@ This project examines the link between vegetation cover (using average NDVI as a
 
 For this project, I divide the greenspace (NDVI) data by census tract to align with the CDC's human health data. Because I need detailed information on the structure of greenspace within each tract, I require high-resolution data. Therefore, I use National Agricultural Imagery Program (NAIP) data, which is collected for the continental U.S. every few years at 1-meter resolution. While NAIP data is primarily intended for agricultural purposes, it is also an excellent resource for analyzing urban environments, where small-scale changes can have significant impacts.
 
-## References
+### References
 City-Data. (n.d.a). Income in Denver, Colorado. City-Data.com. Retrieved March 18, 2025, from https://www.city-data.com/income/income-Denver-Colorado.html
 
 City-Data. (n.d.b). Diversity in Denver, Colorado. City-Data.com. Retrieved March 18, 2025, from https://www.city-data.com/city/Denver-Colorado.html#mapOSM?mapOSM[zl]=11&mapOSM[c1]=39.762626183293456&mapOSM[c2]=-104.85694885253908&mapOSM[s]=sql1&mapOSM[fs]=false.
 
 Centers for Disease Control and Prevention. PLACES: Local Data for Better Health. Atlanta, GA: U.S. Department of Health and Human Services, Centers for Disease Control and Prevention, 2023. Available at https://www.cdc.gov/places.
 
-# Set Up Analysis
+## Set Up Analysis
 
-### Import Libraries
+#### Import Libraries
 
 ```python
 
@@ -93,7 +93,7 @@ denver_gdf.plot()
     )
 )
 ```
-### Census Tracts in Denver, Colorado
+## Census Tracts in Denver, Colorado
 <div class="row" style="margin-top: 20px; margin-bottom: 20px; margin-left: 10px; margin-right: 10px;">
     <img src="/img/big_data/cdc_census_tracts.png" alt="Denver CDC Census Tracts" width="70%" height="70%" /> 
 </div>
@@ -172,7 +172,7 @@ asthma_df = pd.read_csv(asthma_path)
 asthma_df
 ```
 
-### Join Health Data with Census Tract Boundaries
+## Join Health Data with Census Tract Boundaries
 
 ```python
 # Join the census tract GeoDataFrame with the asthma prevalence DataFrame using the .merge() method.
@@ -198,16 +198,14 @@ merged_gdf = (
     ).opts(color='asthma', colorbar=True, tools=['hover'])
 ).opts(width=600, height=600, xaxis=None, yaxis=None)
 ```
-
-<div class="row" style="margin-top: 20px; margin-bottom: 20px; margin-left: 10px; margin-right: 10px;">
-    <img src="/img/big_data/Asthma_Denver.png" alt="Asthma Prevelence in Denver, CO" width="80%" height="80%"/> 
-</div>
+## Asthma Prevalence in Denver, Colorado
+<div class="row" style="margin-top: 20px; margin-bottom: 20px; margin-left: 10px; margin-right: 10px;"> <img src="/img/big_data/Asthma_Denver.png" alt="Asthma Prevalence in Denver, CO" width="80%" height="80%"/> </div>
 
 ## Interpretation
 
-There does appear to be a mild geographical corellation to the distribution of adults who have asthma. Whether this is a by product of another variable or not cannot be determined at this time. Other potential causes could be income disparity, areas with high pollution due to heavy industry or other reasons, or areas with insufficent access to affordable healthcare. I look into this further later on in this project
+There appears to be a mild geographical correlation with the distribution of adults who have asthma. However, it is unclear whether this is a direct relationship or a byproduct of another variable. Other potential contributing factors include income disparity, high pollution levels due to heavy industry, or limited access to affordable healthcare. I explore these possibilities further later in this project.
 
-# Connect to the planetary computer catalog
+### Connect to the planetary computer catalog
 ```python
 e84_catalog = pystac_client.Client.open(
     "https://planetarycomputer.microsoft.com/api/stac/v1"
@@ -268,7 +266,7 @@ for i, tract_values in tqdm(merged_latlon_gdf.iterrows()):
                 i += 1
                 continue
 ```
-
+Join Dataframes Together
 ```python
 # Concatenate the url dataframes
 if scene_dfs:
@@ -279,67 +277,7 @@ else:
 # Preview the URL DataFrame
 scene_df
 ```
-
-```python
-# Skip this step if data are already downloaded 
-if not scene_df is None:
-    # Get an example tract
-    tract = denver_gdf.loc[0].tract2010
-    ex_scene_gdf = scene_df[scene_df.tract==tract]
-
-    # Loop through all images for tract
-    tile_das = []
-    for _, href_s in ex_scene_gdf.iterrows():
-        # Open vsi connection to data
-        tile_da = rxr.open_rasterio(
-            href_s.rgbir_href, masked=True).squeeze()
-        
-        # Crop data to the bounding box of the census tract
-        boundary = (
-            merged_gdf
-            .set_index('tract2010')
-            .loc[[tract]]
-            .to_crs(tile_da.rio.crs)
-            .geometry
-        )
-        crop_da = tile_da.rio.clip_box(
-            *boundary.envelope.total_bounds,
-            auto_expand=True)
-
-        # Clip data to the boundary of the census tract
-        clip_da = crop_da.rio.clip(boundary, all_touched=True)
-            
-        # Compute NDVI
-        ndvi_da = (
-            (clip_da.sel(band=4) - clip_da.sel(band=1)) 
-            / (clip_da.sel(band=4) + clip_da.sel(band=1))
-        )
-
-        # Accumulate result
-        tile_das.append(ndvi_da)
-
-    # Merge data
-    scene_da = rxrmerge.merge_arrays(tile_das)
-
-    # Mask vegetation
-    veg_mask = (scene_da>.3)
-
-    # Calculate mean patch size
-    labeled_patches, num_patches = label(veg_mask)
-    
-    # Count patch pixels, ignoring background at patch 0
-    patch_sizes = np.bincount(labeled_patches.ravel())[1:]
-    mean_patch_size = patch_sizes.mean()
-
-    # Calculate edge density
-    kernel = np.array([
-        [1, 1, 1], 
-        [1, -8, 1], 
-        [1, 1, 1]])
-    edges = convolve(veg_mask, kernel, mode='constant')
-    edge_density = np.sum(edges != 0) / veg_mask.size
-```
-
+Calculate the NDVI, Mask, and Determine Edge Density 
 ```python
 # Skip this step if data are already downloaded 
 if not scene_df is None:
@@ -419,7 +357,7 @@ ndvi_stats_df = pd.read_csv(ndvi_stats_path)
 ndvi_stats_df
 ```
 
-
+Plot the Data
 ```python
 # Merge census data with geometry
 merged_ndvi_gdf = (
@@ -469,13 +407,14 @@ def plot_chloropleth(gdf, colorbar_opts=None, **opts):
        <img src="/img/big_data/veg_density_denver.png" alt="Vegetation Edge Density in Denver, CO" width="80%" height="80%"/> 
 </div>
 
-## Plot discription and Comparison
+## Plot Description and Comparison
 
-There are several correlations between the two plots and other data sources that suggest a slight link between vegetation density and asthma rates. However, additional research has shown a stronger correlation between income and asthma, as well as between ethnicity and asthma. There also appears to be a connection between proximity to highways and industrial areas and higher asthma rates.
+Several correlations emerge between the two plots and other data sources, suggesting a slight link between vegetation density and asthma rates. However, stronger correlations have been found between asthma and factors such as income, ethnicity, and proximity to highways or industrial areas.
 
-In the map of income in Denver, there are clear similarities between lower-income areas and those with higher asthma rates. The area highlighted in the Asthma Incidence map shows that the average income in that census tract is approximately $26,000. In contrast, the area directly to the north has a significantly lower asthma rate and a median income of $240,000 (City-Data.com, n.d.a.).
+In the income map of Denver, lower-income areas generally align with higher asthma rates. For example, the census tract highlighted in the Asthma Incidence map has an average income of approximately $26,000, whereas the area directly to the north—where asthma rates are significantly lower—has a median income of $240,000 (City-Data.com, n.d.a.).
 
-One map that closely matches the distribution of asthma prevalence is a map of racial and ethnic diversity. Communities with the lowest levels of diversity also showed the lowest asthma rates (City-Data.com, n.d.b.).
+Another map that closely matches asthma prevalence is one depicting racial and ethnic diversity. Communities with the lowest diversity also tend to have the lowest asthma rates (City-Data.com, n.d.b.).
+
 ### Denver Median Income 
 <div class="row" style="margin-top: 20px; margin-bottom: 20px; margin-left: 10px; margin-right: 10px;">
     <img src="/img/big_data/denver_median_income.png" alt="Denver Median Income, CO" width="40%" height="40%"/> 
