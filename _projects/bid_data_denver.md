@@ -213,7 +213,7 @@ There does appear to be a geographical component to the distribution of adults w
 There is one map that does closely match the distribution of asthma prevalence, and that is a map based on more diverse communities. Communities with the least around of diversity showed the lowest levels of asthma (City-Data.com, n.d.). 
 
 <div class="row" style="margin-top: 20px; margin-bottom: 20px; margin-left: 10px; margin-right: 10px;">
-    <img src="/img/big_data/Asthma_Denver.png" alt="Asthma Prevelence in Denver, CO" width="40%" height="40%"/> 
+    <img src="/img/big_data/" alt="Asthma Prevelence in Denver, CO" width="40%" height="40%"/> 
 </div>
 
 # Connect to the planetary computer catalog
