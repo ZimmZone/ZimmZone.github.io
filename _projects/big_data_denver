@@ -17,3 +17,47 @@ This project examines the link between vegitation cover (using average NDVI as a
 ## Using 'Big Data' in the Form of Census Tracts
 
 For this project, I split up the green space (NDVI) data by census tract, because this matches the human health data from the CDC. Because I need to know more about the structure of green space within each tract, I need higher resolution data, so I will use National Agricultural Imagery Program (NAIP) data, which is taken for the continental US every few years at 1m resolution. The main purpose of the NAIP data is, as the name suggests, agriculture. However, it’s also a great source for urban areas where lots is happening on a very small scale.
+
+### Set Up Analysis
+
+# Imports
+
+```python
+
+import pandas as pd
+import rioxarray as rxr # Work with geospatial raster data
+import geopandas as gpd
+import pathlib
+import os
+import hvplot.pandas
+import geoviews as gv
+import cartopy.crs as ccrs
+gv.extension('bokeh')  # Activates GeoViews with the Bokeh backend
+
+# For the NDVI Data
+import re # Extract metadata from file names
+import zipfile # Work with zip files
+from io import BytesIO # Stream binary (zip) files
+import numpy as np # Unpack bit-wise Fmask
+import requests # Request data over HTTP
+import pystac_client
+import rioxarray.merge as rxrmerge
+import shapely
+import xarray as xr
+import glob
+from cartopy import crs as ccrs
+from scipy.ndimage import convolve
+from sklearn.model_selection import KFold
+from scipy.ndimage import label
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from tqdm.notebook import tqdm
+
+warnings.simplefilter('ignore')
+```
+
+```
+# Prevent GDAL from quitting due to momentary disruptions
+os.environ["GDAL_HTTP_MAX_RETRY"] = "5"
+os.environ["GDAL_HTTP_RETRY_DELAY"] = "1"
+```
