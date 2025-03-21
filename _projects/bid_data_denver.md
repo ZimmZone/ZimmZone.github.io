@@ -6,16 +6,18 @@ longdesc="https://www.istockphoto.com/photo/denver-colorado-skyscrapers-snowy-lo
 #### Introduction
 # Urban Greenspace and Asthma Prevalence
 
-This project examines the link between vegitation cover (using average NDVI as a measurement of vegatation health) and human health. In this notebooke I will calucalte patch, edge, and fragmentation statistics about urban greenspace in Washington D.C. These statistics should be reflective of the connectivity and spread of urban greenspace, which are important for ecosystem function and access. I then use a inear model to identify statistically significant correlations between the distribution of greenspace and health data compiled by the US Center for Disease Control.
+This project examines the link between vegetation cover (using average NDVI as a measurement of vegetation health) and human health. In this notebook, I will calculate patch, edge, and fragmentation statistics for urban greenspace in Washington, D.C. These statistics reflect the connectivity and distribution of urban greenspace, which are important for ecosystem function and accessibility. I then use a linear model to identify statistically significant correlations between greenspace distribution and health data compiled by the U.S. Centers for Disease Control and Prevention (CDC).
 
 ## Using 'Big Data' in the Form of Census Tracts
 
-For this project, I split up the green space (NDVI) data by census tract, because this matches the human health data from the CDC. Because I need to know more about the structure of green space within each tract, I need higher resolution data, so I will use National Agricultural Imagery Program (NAIP) data, which is taken for the continental US every few years at 1m resolution. The main purpose of the NAIP data is, as the name suggests, agriculture. However, it’s also a great source for urban areas where lots is happening on a very small scale.
+For this project, I divide the greenspace (NDVI) data by census tract to align with the CDC's human health data. Because I need detailed information on the structure of greenspace within each tract, I require high-resolution data. Therefore, I use National Agricultural Imagery Program (NAIP) data, which is collected for the continental U.S. every few years at 1-meter resolution. While NAIP data is primarily intended for agricultural purposes, it is also an excellent resource for analyzing urban environments, where small-scale changes can have significant impacts.
 
 ## References
-City-Data. (n.d.). Income in Denver, Colorado. City-Data.com. Retrieved March 18, 2025, from https://www.city-data.com/income/income-Denver-Colorado.html
+City-Data. (n.d.a). Income in Denver, Colorado. City-Data.com. Retrieved March 18, 2025, from https://www.city-data.com/income/income-Denver-Colorado.html
 
+City-Data. (n.d.b). Diversity in Denver, Colorado. City-Data.com. Retrieved March 18, 2025, from https://www.city-data.com/city/Denver-Colorado.html#mapOSM?mapOSM[zl]=11&mapOSM[c1]=39.762626183293456&mapOSM[c2]=-104.85694885253908&mapOSM[s]=sql1&mapOSM[fs]=false.
 
+Centers for Disease Control and Prevention. PLACES: Local Data for Better Health. Atlanta, GA: U.S. Department of Health and Human Services, Centers for Disease Control and Prevention, 2023. Available at https://www.cdc.gov/places.
 
 # Set Up Analysis
 
@@ -98,13 +100,11 @@ denver_gdf.plot()
 
 # City of Denver Data Description
 
-Data is drawn from the Center for Disease Control PLACES: Local Data for Better Health data set. The Places Dataset estimates chronic disease and other health-related measures at various geographic levels of the United States using a small area estimation methodology. Data are derived from Behavioral Risk Factors Surveillance System data, Census population data, and American Community Survey data. There are a total of 40 measures genereated in the 2024 release. For more information see the CDC Places website.
+Data is drawn from the Center for Disease Control PLACES: Local Data for Better Health data set. The Places Dataset estimates chronic disease and other health-related measures at various geographic levels of the United States using a small area estimation methodology. Data are derived from Behavioral Risk Factors Surveillance System data, Census population data, and American Community Survey data. There are a total of 40 measures genereated in the 2024 release.
 
 For this analysis, I will be using data from the city level - specifically the city of Denver. 
 
-For information on how to access this data via the CDC portal, you can follow this tutorial. https://www.cdc.gov/places/tools/explore-places-data-portal.html
-
-Reference: https://www.cdc.gov/places/methodology/index.html
+For information on how to access this data via the CDC portal, you can follow this [tutorial](https://www.cdc.gov/places/tools/explore-places-data-portal.html).
 
 You can obtain urls for the U.S. Census Tract shapefiles from [the TIGER
 service](https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html).
@@ -203,18 +203,9 @@ merged_gdf = (
     <img src="/img/big_data/Asthma_Denver.png" alt="Asthma Prevelence in Denver, CO" width="80%" height="80%"/> 
 </div>
 
-# CDC ASTHMA PLACES DESCRIPTION AND CITATION
-
 ## Interpretation
 
-There does appear to be a geographical component to the distribution of adults who have asthma. Whether this is a by product of another variable or not cannot be determined at this time. Other potential causes could be income disparity, areas with high pollution due to heavy industry or other reasons, or areas with insufficent access to affordable healthcare. For intance, in the map of income of Denver, there are similarities between those in lower income areas and those with asthma. The area in the Asthma Incidence map shows that the average income in that census tract is approximately 26K. The areas directly to the north has a significantly lower rate of asthma and a median income of 240k (City-Data.com, n.d.). 
-
-
-There is one map that does closely match the distribution of asthma prevalence, and that is a map based on more diverse communities. Communities with the least around of diversity showed the lowest levels of asthma (City-Data.com, n.d.). 
-
-<div class="row" style="margin-top: 20px; margin-bottom: 20px; margin-left: 10px; margin-right: 10px;">
-    <img src="/img/big_data/" alt="Asthma Prevelence in Denver, CO" width="40%" height="40%"/> 
-</div>
+There does appear to be a mild geographical corellation to the distribution of adults who have asthma. Whether this is a by product of another variable or not cannot be determined at this time. Other potential causes could be income disparity, areas with high pollution due to heavy industry or other reasons, or areas with insufficent access to affordable healthcare. I look into this further later on in this project
 
 # Connect to the planetary computer catalog
 ```python
@@ -482,6 +473,15 @@ def plot_chloropleth(gdf, colorbar_opts=None, **opts):
 
 ## Plot discription and Comparison
 
-There are several coreleation between the two plots and other sources of data that show a slight link between vegitation density and asthma rates. However, additional research has show a more persuasive correlation between income and asthma and ethnicity and asthma. There also seems to be a link between how close individuals live highways and industrial areas and asthma rates.
+There are several correlations between the two plots and other data sources that suggest a slight link between vegetation density and asthma rates. However, additional research has shown a stronger correlation between income and asthma, as well as between ethnicity and asthma. There also appears to be a connection between proximity to highways and industrial areas and higher asthma rates.
+
+In the map of income in Denver, there are clear similarities between lower-income areas and those with higher asthma rates. The area highlighted in the Asthma Incidence map shows that the average income in that census tract is approximately $26,000. In contrast, the area directly to the north has a significantly lower asthma rate and a median income of $240,000 (City-Data.com, n.d.a.).
+
+One map that closely matches the distribution of asthma prevalence is a map of racial and ethnic diversity. Communities with the lowest levels of diversity also showed the lowest asthma rates (City-Data.com, n.d.b.).
+
+<div class="row" style="margin-top: 20px; margin-bottom: 20px; margin-left: 10px; margin-right: 10px;">
+    <img src="/img/big_data/denver_median_income.png" alt="Asthma Prevelence in Denver, CO" width="40%" height="40%"/> 
+  <img src="/img/big_data/denver_diversity.png" alt="Asthma Prevelence in Denver, CO" width="40%" height="40%"/> 
+</div>
 
 
