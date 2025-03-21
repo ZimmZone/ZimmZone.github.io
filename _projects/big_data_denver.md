@@ -417,10 +417,10 @@ Another map that closely matches asthma prevalence is one depicting racial and e
 
 ### Denver Median Income 
 <div class="row" style="margin-top: 20px; margin-bottom: 20px; margin-left: 10px; margin-right: 10px;">
-    <img src="/img/big_data/denver_median_income.png" alt="Denver Median Income, CO" width="40%" height="40%"/> 
+    <img src="/img/big_data/denver_median_income.png" alt="Denver Median Income, CO" width="80%" height="80%"/> 
 </div>
 
 ### Diversity Density in Denver, CO
-<div
-  <img src="/img/big_data/denver_diversity.png" alt="Diversity Map of Denver, CO" width="40%" height="40%"/> 
+<div class="row" style="margin-top: 20px; margin-bottom: 20px; margin-left: 10px; margin-right: 10px;">
+  <img src="/img/big_data/denver_diversity.png" alt="Diversity Map of Denver, CO" width="800%" height="80%"/> 
 </div>
