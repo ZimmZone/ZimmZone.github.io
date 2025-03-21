@@ -21,7 +21,7 @@ Centers for Disease Control and Prevention. PLACES: Local Data for Better Health
 
 # Set Up Analysis
 
-### Imports Libraries
+### Import Libraries
 
 ```python
 
@@ -93,7 +93,7 @@ denver_gdf.plot()
     )
 )
 ```
-
+### Census Tracts in Denver, Colorado
 <div class="row" style="margin-top: 20px; margin-bottom: 20px; margin-left: 10px; margin-right: 10px;">
     <img src="/img/big_data/cdc_census_tracts.png" alt="Denver CDC Census Tracts" width="70%" height="70%" /> 
 </div>
@@ -465,10 +465,8 @@ def plot_chloropleth(gdf, colorbar_opts=None, **opts):
 )
 ```
 <div class="row" style="margin-top: 20px; margin-bottom: 20px; margin-left: 10px; margin-right: 10px;">
-    <img src="/img/big_data/asthma_rate_denver.png" alt="City of Denver" width="80%" height="80%"/> 
-</div>
-<div class="row" style="margin-top: 20px; margin-bottom: 20px; margin-left: 10px; margin-right: 10px;">
-    <img src="/img/big_data/veg_density_denver.png" alt="City of Denver" width="80%" height="80%"/> 
+    <img src="/img/big_data/asthma_rate_denver.png" alt="Asthma Prevelence in Denver, CO" width="80%" height="80%"/> 
+       <img src="/img/big_data/veg_density_denver.png" alt="Vegetation Edge Density in Denver, CO" width="80%" height="80%"/> 
 </div>
 
 ## Plot discription and Comparison
@@ -478,10 +476,12 @@ There are several correlations between the two plots and other data sources that
 In the map of income in Denver, there are clear similarities between lower-income areas and those with higher asthma rates. The area highlighted in the Asthma Incidence map shows that the average income in that census tract is approximately $26,000. In contrast, the area directly to the north has a significantly lower asthma rate and a median income of $240,000 (City-Data.com, n.d.a.).
 
 One map that closely matches the distribution of asthma prevalence is a map of racial and ethnic diversity. Communities with the lowest levels of diversity also showed the lowest asthma rates (City-Data.com, n.d.b.).
-
+### Denver Median Income 
 <div class="row" style="margin-top: 20px; margin-bottom: 20px; margin-left: 10px; margin-right: 10px;">
-    <img src="/img/big_data/denver_median_income.png" alt="Asthma Prevelence in Denver, CO" width="40%" height="40%"/> 
-  <img src="/img/big_data/denver_diversity.png" alt="Asthma Prevelence in Denver, CO" width="40%" height="40%"/> 
+    <img src="/img/big_data/denver_median_income.png" alt="Denver Median Income, CO" width="40%" height="40%"/> 
 </div>
 
-
+### Diversity Density in Denver, CO
+<div
+  <img src="/img/big_data/denver_diversity.png" alt="Diversity Map of Denver, CO" width="40%" height="40%"/> 
+</div>
