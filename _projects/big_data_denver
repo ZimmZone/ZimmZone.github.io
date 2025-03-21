@@ -1,1 +1,19 @@
+---
+layout: page
+title: Green Space and Adult Asthma Prevalence in Denver, CO
+description: Big Data
+---
 
+<div class="row" style="margin-top: 20px; margin-bottom: 20px; margin-left: 10px; margin-right: 10px;">
+    <img src="/assets/img/big_data/denver_city.png" alt="City of Denver" width="100%" height="100%" 
+longdesc="https://www.istockphoto.com/photo/denver-colorado-skyscrapers-snowy-longs-peak-rocky-mountains-summer-gm537215344-95103705" /> 
+</div>
+
+#### Introduction
+# Urban Greenspace and Asthma Prevalence
+
+This project examines the link between vegitation cover (using average NDVI as a measurement of vegatation health) and human health. In this notebooke I will calucalte patch, edge, and fragmentation statistics about urban greenspace in Washington D.C. These statistics should be reflective of the connectivity and spread of urban greenspace, which are important for ecosystem function and access. I then use a inear model to identify statistically significant correlations between the distribution of greenspace and health data compiled by the US Center for Disease Control.
+
+## Using 'Big Data' in the Form of Census Tracts
+
+For this project, I split up the green space (NDVI) data by census tract, because this matches the human health data from the CDC. Because I need to know more about the structure of green space within each tract, I need higher resolution data, so I will use National Agricultural Imagery Program (NAIP) data, which is taken for the continental US every few years at 1m resolution. The main purpose of the NAIP data is, as the name suggests, agriculture. However, it’s also a great source for urban areas where lots is happening on a very small scale.
