@@ -44,26 +44,7 @@ I am an academic and political scientist by training and a writer by profession.
 * [Arctic Tern Migration 2023 - Interactive Map](/Notebooks/arctic-tern-migration-final.html)
 * [Redlining and Vegetation Health in Fort Collins, Colorado](/Notebooks/fort_collins_portfolio_post2.html)
 * [Using Big Data to Compare Asthma Prevalence to Green Space](https://ZimmZone.github.io/_projects/big_data_denver.html)
-
-<li>
-<a href="/projects/big_data_denver.html" 
-    target="_blank">
-    Using Big Data to Compare Asthma Prevalence to Green Space
-  </a>
-</li>
-<li>
-<a href="https://zimmzone.github.io/projects/big_data_denver.html" 
-    target="_blank">
-    Using Big Data to Compare Asthma Prevalence to Green Space
-  </a>
-</li>
-<li>
-<a 
-    href="/_projects/big_data_denver.html" 
-    target="_blank">
-    Using Big Data to Compare Asthma Prevalence to Green Space
-  </a>
-</li>
+* [Using Big Data to Compare Asthma Prevalence to Green Space](/_projects/big_data_denver.html)
 
 
 #### Welcome to my Neighborhood in Loveland, Colorado.
