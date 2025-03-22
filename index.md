@@ -45,6 +45,10 @@ I am an academic and political scientist by training and a writer by profession.
 * [Redlining and Vegetation Health in Fort Collins, Colorado](/Notebooks/fort_collins_portfolio_post2.html)
 * [Using Big Data to Compare Asthma Prevalence to Green Space](https://ZimmZone.github.io/_projects/big_data_denver.html)
 
+<a href="/projects/big_data_denver.html" target="_blank">Using Big Data to Compare Asthma Prevalence to Green Space</a>
+
+<a href="https://zimmzone.github.io/projects/big_data_denver.html" target="_blank">Using Big Data to Compare Asthma Prevalence to Green Space</a>
+
 
 #### Welcome to my Neighborhood in Loveland, Colorado.
 <embed type="text/html" src="img/tvhs1.html" width="600" height="600">
