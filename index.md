@@ -43,7 +43,7 @@ I am an academic and political scientist by training and a writer by profession.
 * [Maximum Temperature in Denver Colorado from 1948-2023](/Notebooks/portfolio_Denver_CO_TMAX_withcode.html)
 * [Arctic Tern Migration 2023 - Interactive Map](/Notebooks/arctic-tern-migration-final.html)
 * [Redlining and Vegetation Health in Fort Collins, Colorado](/Notebooks/fort_collins_portfolio_post2.html)
-* [Using Big Data to Compare Asthma Prevalence to Green Space](/_projects/big_data_denver.md)
+* [Using Big Data to Compare Asthma Prevalence to Green Space](/docs/big_data_denver.html)
 * [Using Big Data to Compare Asthma Prevalence to Green Space](https://zimmzone.github.io/_projects/big_data_denver.md)
 
 
